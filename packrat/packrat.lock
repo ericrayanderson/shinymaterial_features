@@ -8,15 +8,59 @@ Source: CRAN
 Version: 2.2.2
 Hash: b2366cd9d2f3851a5704b4e192b985c2
 
+Package: RColorBrewer
+Source: CRAN
+Version: 1.1-2
+
 Package: Rcpp
 Source: CRAN
 Version: 0.12.13
 Hash: b9d8d89ff10ca2d8bfdaccdf83045ba1
 
+Package: assertthat
+Source: CRAN
+Version: 0.2.0
+
+Package: bindr
+Source: CRAN
+Version: 0.1
+
+Package: bindrcpp
+Source: CRAN
+Version: 0.2
+Requires: Rcpp, bindr
+
+Package: colorspace
+Source: CRAN
+Version: 1.3-2
+
+Package: dichromat
+Source: CRAN
+Version: 2.0-0
+
 Package: digest
 Source: CRAN
 Version: 0.6.12
 Hash: e53fb8c58673df868183697e39a6a4d6
+
+Package: dplyr
+Source: CRAN
+Version: 0.7.4
+Requires: R6, Rcpp, assertthat, bindrcpp, glue, magrittr, pkgconfig,
+    rlang, tibble
+
+Package: ggplot2
+Source: CRAN
+Version: 2.2.1
+Requires: digest, gtable, lazyeval, plyr, reshape2, scales, tibble
+
+Package: glue
+Source: CRAN
+Version: 1.1.1
+
+Package: gtable
+Source: CRAN
+Version: 0.2.0
 
 Package: htmltools
 Source: CRAN
@@ -35,27 +79,91 @@ Source: CRAN
 Version: 1.5
 Hash: 9c51936d8dd00b2f1d4fe9d10499694c
 
+Package: labeling
+Source: CRAN
+Version: 0.3
+
+Package: lazyeval
+Source: CRAN
+Version: 0.2.0
+
+Package: magrittr
+Source: CRAN
+Version: 1.5
+
 Package: mime
 Source: CRAN
 Version: 0.5
 Hash: 463550cf44fb6f0a2359368f42eebe62
+
+Package: munsell
+Source: CRAN
+Version: 0.4.3
+Requires: colorspace
 
 Package: packrat
 Source: CRAN
 Version: 0.4.8-1
 Hash: 6ad605ba7b4b476d84be6632393f5765
 
+Package: pkgconfig
+Source: CRAN
+Version: 2.0.1
+
+Package: plyr
+Source: CRAN
+Version: 1.8.4
+Requires: Rcpp
+
+Package: reshape2
+Source: CRAN
+Version: 1.4.2
+Requires: Rcpp, plyr, stringr
+
+Package: rlang
+Source: CRAN
+Version: 0.1.2
+
+Package: scales
+Source: CRAN
+Version: 0.5.0
+Requires: R6, Rcpp, RColorBrewer, dichromat, labeling, munsell, plyr,
+    viridisLite
+
 Package: shiny
 Source: CRAN
 Version: 1.0.5
 Hash: 4d47532a807122bfd6bc3818310f9d2e
-Requires: R6, digest, htmltools, httpuv, jsonlite, mime, sourcetools,
-    xtable
+Requires: R6, digest, jsonlite, mime, sourcetools, xtable, httpuv,
+    htmltools
+
+Package: shinymaterial
+Source: CRAN
+Version: 0.3.0
+Requires: shiny
 
 Package: sourcetools
 Source: CRAN
 Version: 0.1.6
 Hash: 226d56d7469587da40b0f96180e711b4
+
+Package: stringi
+Source: CRAN
+Version: 1.1.5
+
+Package: stringr
+Source: CRAN
+Version: 1.2.0
+Requires: magrittr, stringi
+
+Package: tibble
+Source: CRAN
+Version: 1.3.4
+Requires: Rcpp, rlang
+
+Package: viridisLite
+Source: CRAN
+Version: 0.2.0
 
 Package: xtable
 Source: CRAN

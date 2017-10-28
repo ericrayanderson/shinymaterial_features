@@ -1,50 +1,61 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
 library(shiny)
+library(shinymaterial)
+library(dplyr)
+library(ggplot2)
 
-# Define UI for application that draws a histogram
-ui <- fluidPage(
-   
-   # Application title
-   titlePanel("Old Faithful Geyser Data"),
-   
-   # Sidebar with a slider input for number of bins 
-   sidebarLayout(
-      sidebarPanel(
-         sliderInput("bins",
-                     "Number of bins:",
-                     min = 1,
-                     max = 50,
-                     value = 30)
+# Wrap shinymaterial apps in material_page
+ui <- material_page(
+  title = "Full Featured Dashboard Example",
+  nav_bar_color = "blue",
+  # Place side-nav in the beginning of the UI
+  material_side_nav(
+    fixed = TRUE,
+    image_source = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8sc3P0feYEBr53Bou3z5a0a-oE_A_nggnbRGX0WIGT12gDi3Ifg",
+    # Place side-nav tabs within side-nav
+    material_side_nav_tabs(
+      side_nav_tabs = c(
+        "Visualize" = "example_side_nav_tab_1",
+        "Explore" = "example_side_nav_tab_2",
+        "Export" = "example_side_nav_tab_3"
       ),
-      
-      # Show a plot of the generated distribution
-      mainPanel(
-         plotOutput("distPlot")
+      icons = c("insert_chart", "cast", "cloud")
+    )
+  ),
+  # Define side-nav tab content
+  material_side_nav_tab_content(
+    side_nav_tab_id = "example_side_nav_tab_1",
+    tags$br(),
+    material_row(
+      material_column(
+        width = 10,
+        offset = 1,
+        material_card(
+          plotOutput('mtcarsplot')
+        )
       )
-   )
+    )
+  ),
+  material_side_nav_tab_content(
+    side_nav_tab_id = "example_side_nav_tab_2",
+    tags$br(),
+    material_row(
+      material_column(
+        width = 10,
+        offset = 1,
+        material_card(
+          dataTableOutput('mtcarsdata')
+        )
+      )
+    )
+  )
 )
 
-# Define server logic required to draw a histogram
 server <- function(input, output) {
-   
-   output$distPlot <- renderPlot({
-      # generate bins based on input$bins from ui.R
-      x    <- faithful[, 2] 
-      bins <- seq(min(x), max(x), length.out = input$bins + 1)
-      
-      # draw the histogram with the specified number of bins
-      hist(x, breaks = bins, col = 'darkgray', border = 'white')
-   })
+  output$mtcarsplot <- renderPlot({
+    ggplot(tibble::rownames_to_column(mtcars),
+           aes(x = wt, y = mpg, color = rowname)) +
+      geom_point(size = 10, alpha = .5) +
+      theme(legend.position = "none")
+  })
 }
-
-# Run the application 
 shinyApp(ui = ui, server = server)
-
